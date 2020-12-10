@@ -1,0 +1,211 @@
+@import "../../assets/styles/styles-variables.scss";
+
+.teaser-wrapper {
+  position: absolute;
+  top: 0;
+  display: block;
+  height: auto;
+  width: 96%;
+  min-width: 170px;
+  padding: 2%;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+
+  .articles {
+    display: flex;
+
+    .article-item {
+      display: flex;
+      flex-direction: row;
+      background-size: cover;
+      cursor: pointer;
+
+      .image {
+        display: flex;
+        flex-basis: 50%;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+          object-position: left;
+        }
+      }
+
+      .content {
+        position: relative;
+        background-color: rgba($corporate-color, 0.5);
+
+        .title {
+          color: $corporate-color;
+          font-weight: bold;
+          font-size: 1.5em;
+        }
+
+        .text {
+          color: $text-color;
+          font-size: 0.9em;
+        }
+
+        .learn-more-link {
+          background-color: $corporate-color;
+          text-decoration: none;
+          font-weight: normal;
+          padding: 5px 10px;
+          color: $white-color;
+          text-align: center;
+          transition: 200ms;
+
+          &:hover {
+            background-color: lighten($corporate-color, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .cta-button {
+    button {
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      color: $white-color;
+      font-size: 18px;
+      text-transform: uppercase;
+      background-color: $corporate-color;
+      border: none;
+      cursor: pointer;
+      transition: 200ms;
+
+      &:hover {
+        background-color: lighten($corporate-color, 10%);
+      }
+    }
+  }
+}
+
+.teaser-wrapper {
+  .articles {
+    /* MIDDLE */
+    &.middle {
+      flex-direction: column;
+
+      .article-item {
+        padding-bottom: 10px;
+        background-image: none !important;
+
+        &.four:last-child,
+        &.three:last-child,
+        &.three:nth-child(4) {
+          display: none;
+        }
+
+        .image {
+          flex-basis: 40%;
+        }
+
+        .content {
+          flex-basis: 60%;
+          padding: 10px;
+          background-color: $white-color;
+
+          .title {
+            padding-bottom: 5px;
+          }
+          .learn-more-link {
+            display: none;
+          }
+
+          @media screen and (max-width: 550px) {
+            .title {
+              font-size: 1.5em;
+            }
+            .text,
+            .learn-more-link {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    /* HORIZONTAL && VERTICAL */
+    &.horizontal,
+    &.vertical {
+      flex-direction: column;
+      height: auto;
+
+      .article-item {
+        position: relative;
+        height: 170px;
+        margin-right: 0;
+        margin-bottom: 10px;
+        background-position: center;
+        padding: 0;
+
+        &.four:last-child,
+        &.three:last-child,
+        &.three:nth-child(4) {
+          display: none;
+        }
+
+        .content {
+          display: flex;
+          height: fit-content;
+          padding: 7px;
+          align-self: flex-end;
+
+          .title {
+            height: auto;
+            color: $white-color;
+          }
+
+          .text {
+            display: none;
+            height: 65px;
+            color: $white-color;
+            overflow: hidden;
+          }
+
+          .learn-more-link {
+            display: none;
+            bottom: 5px;
+            right: 5px;
+          }
+
+          @media screen and (max-width: 350px) {
+            .title,
+            .learn-more-link {
+              font-size: 1.2em;
+            }
+
+            .text {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    /* HORIZONTAL */
+    &.horizontal {
+      flex-direction: row;
+      justify-content: space-between;
+
+      .article-item {
+        flex-basis: 19%;
+
+        &.four {
+          flex-basis: 24%;
+        }
+        &.three {
+          flex-basis: 33%;
+        }
+
+        .content {
+          .title {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

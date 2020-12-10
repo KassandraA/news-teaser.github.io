@@ -1,0 +1,30 @@
+<div class="teaser-wrapper" #wrapper (window:resize)="onResize()">
+  <div class="articles" [ngClass]="currentClass">
+    <div
+      *ngFor="let item of newsData"
+      class="article-item"
+      [ngClass]="totalItems"
+      [ngStyle]="{ 'background-image': 'url(\'' + item.imageUrl + '\')' }"
+      (click)="goToArticle(item.url, $event)"
+    >
+      <div *ngIf="currentClass === 'middle'" class="image">
+        <img [src]="item.imageUrl" alt="item.name" title="item.name" />
+      </div>
+      <div class="content">
+        <div class="title">
+          {{ item.title }}
+        </div>
+
+        <p *ngIf="currentClass !== 'horizontal'" class="text">
+          {{ item.content }}
+        </p>
+        <div class="learn-more-link" (click)="goToArticle(item.url, $event)">
+          Learn more
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-button">
+    <button (click)="goToArticle(redirectUrl, $event)">{{ buttonText }}</button>
+  </div>
+</div>
